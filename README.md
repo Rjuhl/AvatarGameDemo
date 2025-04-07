@@ -1,1 +1,3 @@
 # AvatarGameDemo
+This paper builds on hand segmentation technologies, such as Google's Mediapipe, to recognize hand poses in a fraction of a millisecond. The methodology deviates from traditional approaches that use cropped images fed into a CNN to classify images by exploring feature vectors composed of hand articulation points in conjunction with a relatively small MLP. This leads to faster training and inference times. Furthermore, the paper explores how to track poses through time and space and map them to predefined motions by subsampling the palm locations and comparing them against previously crafted score maps. Together, these technologies allow hand pose and motion to be tracked in real-time for gaming applications.
+
