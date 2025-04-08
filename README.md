@@ -10,9 +10,11 @@ Hand pose recognition is divided into two steps:
 1. **Extracting Joint Position Data**  
    Google’s [MediaPipe](https://ai.google.dev/edge/mediapipe/solutions/guide) hand-tracking detects a hand and outputs 21 3D landmarks representing key points on the hand.  
    
-   ![Hand Joint Points](#) <!-- Replace with actual figure -->
+   <p align="center">
+     <img src="assets/GoogleMediaPipeHandArticulation.png" alt="MediaPipe Hand Articulation" width="300">
+   </p>
 
-2. **Interpreting Pose from Data**  
+3. **Interpreting Pose from Data**  
    These 21 points are flattened into a 63-dimensional feature vector (x, y, z for each point) and passed into a 4-layer fully connected neural network. The model was trained on a modified version of the [ASL Alphabet Dataset](https://www.kaggle.com/datasets/debashishsau/aslamerican-sign-language-aplhabet-dataset), where:
    - The ASL sign for **X** was repurposed as **Fire**
    - The ASL sign for **E** was used as **Earth**
@@ -29,7 +31,9 @@ Hand pose recognition is divided into two steps:
    - **Learning Rate Scheduler**: Multiplicative decay  
 
   This weighting strategy was designed to bias the model toward predicting elemental poses, aligning with the game’s interactive dynamics, where recognizing an elemental pose is more critical than identifying the absence of a pose, especially given the predominance of ”no pose” data in the training set.
-   ![Neural Network Architecture](#) <!-- Replace with actual figure -->
+   <p align="center">
+     <img src="assets/CS131ProjectMLPGraphic.png" alt="MLP Design" width="600">
+   </p>
 
 ---
 
@@ -47,7 +51,9 @@ To create a score map:
 
 Examples of score maps:
 
-![Score Maps](#) <!-- Replace with actual figure -->
+<p align="center">
+     <img src="assets/scoremaps.png" alt="Score Maps" width="600">
+</p>
 
 ### Normalizing Motion
 
@@ -58,7 +64,9 @@ To compare a user’s motion with the score maps:
 4. Compute the score by **element-wise multiplication** of motion and score map
 5. The highest score (above a threshold) determines the identified gesture
 
-![Motion Normalization](#) <!-- Replace with actual figure -->
+<p align="center">
+     <img src="assets/coordinatesToScoreMaps.png" alt="Motion Normalization" width="600">
+</p>
 
 ---
 
